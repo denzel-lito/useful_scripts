@@ -1,17 +1,31 @@
+#   атрибуты для вызова py-файла
+#----------------------------------
 import argparse
 parser = argparse.ArgumentParser()
 
-## Required parameters
 parser.add_argument("--data_dir",
                     default=None,
                     type=str,
                     required=True,
-                    help="The input data dir. Should contain the .tsv files (or other data files) for the task.")
+                    help="the input data dir")
+parser.add_argument("--model_type",
+                    default=None,
+                    choices=('text', 'voice'),
+                    type=str,
+                    required=True,
+                    help="type of model. choose from ['text', 'voice']")
 parser.add_argument("--print",
                     action='store_true',
-                    help="Flag of process printing")
+                    help="flag of process printing")
 args = parser.parse_args()
 
 if args.print:
     print(args.data_dir)
 
+
+#----------------------------------
+#     переменные окружения
+#----------------------------------
+import os
+os.environ["surface"] = "my_value"
+a = os.getenv('surface')
