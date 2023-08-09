@@ -1,11 +1,10 @@
-# Визуализация применения функции через apply в pandas:
+# Визуализация применения функции через apply в pandas
 from tqdm import tqdm
 tqdm.pandas()
 df_clean['vector'] = df_clean.tokens.progress_apply(lambda x: …)
 
 
-
-# Параллелизм процесса:
+# Параллелизм процесса
 from pandarallel import pandarallel
 pandarallel.initialize(progress_bar=True)
 df_clean['vector'] = df_clean.tokens.parallel_apply(lambda x: …)
